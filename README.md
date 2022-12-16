@@ -5,6 +5,8 @@
 SCREENSHOT AND LINK TO DEPLOYED PAGE- YOUVE GOTTEN MARKED DOWN EVERY ASSIGNMENT
 COMMENT JS FILE PLEASE
 
+link to website with Q answers 
+https://www.interviewbit.com/javascript-mcq/#javascript-is-an-_______-language
 
 
 
