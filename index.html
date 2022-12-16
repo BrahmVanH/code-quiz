@@ -7,6 +7,75 @@
     <title>Code Quiz</title>
 </head>
 <body>
+
+<!--HEADER TO HOLD TIMER AND HIGH SCORE LINK-->
+
+    <div id="header">
+        <div class="row">
+            <div id="viewScores"></div>
+            <div id="timer"></div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container">
+    <!--welcome page to initiate quiz-->
+
+        <div id="welcomePage">
+            <h1> Coding Quiz</h1>
+            <p> Test your coding knowledge! Press Start!</p>
+            <button id="startQuiz"></button>
+
+
+        </div>
+
+        <!--quiz questions-->
+
+        <div id="quiz">
+            <h1 id="question"></h1>
+            <div id="answers">
+                
+                <div class="row">
+                    <button type="button" id="0"></button>
+                </div>
+            
+                <div class="row">
+                    <button type="button" id="1"></button>
+                </div>
+            
+                <div class="row">
+                    <button type="button" id="2"></button>
+                </div>
+                
+                <div class="row">
+                    <button type="button" id="3"></button>
+                </div>
+            
+            </div>
+
+
+        </div>
+            <!--Section at end of quiz to input your score to the high score list-->
+        <div id="inputScore">
+            <h1>You've Finished The Quiz</h1>
+            <p>Your final score:</p><span id="score"></span></p>
+            <p>Enter Your Initials to Add to Leaderboard <input type="text" id="initials"></p>
+            <button id="submitInitials">Submit</button>
+        </div>
+
+        <!--high scores page-->
+
+        <div id="highScores">
+            <h1>High Scores</h1>
+            <div id="scoreList"></div>
+            <button id="goBack">Go Back</button>
+            <button id="clearScores">Clear Scores</button>
+        </div>
+
+    </div>
     
+
 </body>
 </html>
