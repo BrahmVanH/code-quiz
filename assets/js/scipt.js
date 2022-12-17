@@ -50,7 +50,7 @@ var questions = [
         choices: ["in", "is in", "exists", "lies"]
         answer: "in"
     }
-]
+];
 
 
 
@@ -87,15 +87,118 @@ const clearBtn = document.querySelector("#clearScores");
 var score = 0;
 var currentQ = 0;
 var highScores = [];
-var interval;
-var timeGiven = 75;
+var timerInterval;
+var timeLeft = 15;
 var secondsElapsed = 0;
 
+// Function to start timer 
 
 function startTimer() {
 
+    var timerEl.textContent = timeLeft;
+
+    var timerInterval = setInterval(function() {
+
+        if (timeLeft > 1) {
+            
+            timerEl.textContent = timeLeft + "seconds remaining";
+
+            timeLeft--;
+        } else if (timeLeft === 1) {
+
+            timerEl.textContent = timeLeft + "second remaining";
+            timeLeft--;
+        
+        } else {
+            timerEl.textContent = '';
+
+            clearInterval(timerInterval);
+            nextQuestion();
+
+
+        }
+
+        }, 1000);
+}
+
+
+function nextQuestion () {
+
+    currentQ++;
+
+    if (currentQ < questions.length) {
+
+        renderQuestion();
+    } else {
+        clearInterval(timerInterval);
+        timerEl.textContent = ""
+    }
+
+
 
 }
+
+function renderQuestion() {
+    
+    questionEl.textContent = questions[currentQ].title;
+    
+    for (i = 0; i < answersEl.children.length; i++) {
+    
+        answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
+    
+    }
+}
+
+function compareAnswer(answer) {
+
+    if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
+
+        displayMessage("Correct!")
+        
+    } else {
+
+        displayMessage('Wrong...')
+    }
+
+}
+
+function displayMessage(message) {
+    var messageEl = $('<div>');
+
+    messageEl.text(message);
+    document.querySelector(".container").append(messageEl)
+    setTimeout( function() {
+        messageEl.remove();
+    }, 2000);
+
+}
+
+function hideStuff(element) {
+ 
+    element.css('display', 'none');
+    
+
+}
+
+
+function showStuff(element) {
+
+    element.css('display', 'block');
+
+}
+
+
+function renderHighScores() {
+
+
+
+}
+
+
+
+
+
+
 
 
 
