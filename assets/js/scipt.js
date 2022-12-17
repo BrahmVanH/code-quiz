@@ -131,7 +131,10 @@ function nextQuestion () {
         renderQuestion();
     } else {
         clearInterval(timerInterval);
-        timerEl.textContent = ""
+        userScoreEl.textContent = score;
+        hideStuff(quizEl);
+        showStuff(inputScoreEl);
+        timerEl.textContent = 0;
     }
 
 
@@ -154,6 +157,7 @@ function compareAnswer(answer) {
     if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
 
         displayMessage("Correct!")
+        score++;
         
     } else {
 
@@ -192,6 +196,13 @@ function renderHighScores() {
 
 
 
+}
+
+function reset() {
+    score = 0;
+    currentQ = 0;
+    secondsElapsed = 0;
+    timerEl.textContent = 0;
 }
 
 

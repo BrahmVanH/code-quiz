@@ -183,16 +183,16 @@ constants for high score page elements
 declare universals variables 
     view scores, timer, create empty spaces to be populated by current score, time at start, etc.
 
-function to start time
+function to start time >>
 funciton to stop timer
 
 function to clear current question and calls for dispaly of next question
-function to display input score screen if on last question
-function to compare answers
+function to display input score screen if on last question >>
+function to compare answers >>
 function to display a message for 2 seconds
-function to hide elements
-function to display elements
-function to reset a local variable
+function to hide elements >>
+function to display elements >>
+function to reset a local variable 
 function to render next question
 function to render high scores stored in local storage
 
