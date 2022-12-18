@@ -1,11 +1,39 @@
-#welcome, #quiz, #inputScore, #highScores {
+
+
+
+
+#welcomePage, #quiz, #inputScore, #highScores {
     width: 70%;
+    background-color: rgb(107, 106, 105, .55);
+    
 }
 
 #quiz, #inputScore, #highScores {
     display: none;
 }
 
-.jumbotron {
-    background-color: white;
+body {
+    background-color: #9ea19f;
 }
+
+.header {
+    background-color: #a1251b;
+}
+
+.jumbotron {
+    background-color: #d2d0cf;
+
+}
+
+.row button {
+    margin: 5px;
+    border: solid 2px #865d4d;
+    background-color: #f0f0f0;
+}
+
+.row div {
+    margin: auto;
+    border: solid 1px #865d4d;
+    background-color: #f0f0f0;
+}
+

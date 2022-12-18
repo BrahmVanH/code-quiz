@@ -90,32 +90,30 @@ var score = 0;
 var currentQ = 0;
 var highScores = [];
 var timerInterval;
-var timeLeft = 15;
-var secondsElapsed = 0;
+var timeLeft = 150;
+
 
 // Function to start timer 
 
 function startTimer() {
 
-     timerEl.textContent = timeLeft;
+    timeLeft = 150
+     timerEl.textContent = timeLeft
 
     var timerInterval = setInterval(function() {
 
-        if (timeLeft > 1) {
+        if (timeLeft >= 1) {
             
-            timerEl.textContent = timeLeft + "seconds remaining";
+            timerEl.textContent = timeLeft;
 
             timeLeft--;
-        } else if (timeLeft === 1) {
 
-            timerEl.textContent = timeLeft + "second remaining";
-            timeLeft--;
-        
         } else {
             timerEl.textContent = '';
 
-            clearInterval(timerInterval);
+           // clearInterval(timerInterval);
             nextQuestion();
+            
 
 
         }
@@ -126,7 +124,7 @@ function startTimer() {
 // Function to stop timer
 
 function stopTimer() {
-    clearInterval(inerval);
+    clearInterval(timerInerval);
 }
 
 // Function to move to next question
@@ -138,8 +136,9 @@ function nextQuestion () {
     if (currentQ < questions.length) {
 
         renderQuestion();
+        
     } else {
-        clearInterval(timerInterval);
+        stopTimer();
         scoreEl.textContent = score;
         hideStuff(quizEl);
         showStuff(inputScoreEl);
@@ -175,6 +174,7 @@ function compareAnswer(answer) {
     } else {
 
         displayMessage('Wrong...')
+        timeLeft -= 5;
     }
 
 }
