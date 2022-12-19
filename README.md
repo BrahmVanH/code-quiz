@@ -5,8 +5,19 @@
 SCREENSHOT AND LINK TO DEPLOYED PAGE- YOUVE GOTTEN MARKED DOWN EVERY ASSIGNMENT
 COMMENT JS FILE PLEASE
 
+
 link to website with Q answers 
 https://www.interviewbit.com/javascript-mcq/#javascript-is-an-_______-language
+
+
+**Still to do**
+gotta add some borders, looks boring
+2s messages need to be at bottom of page
+timer and view scores link needs more space between
+go back/clear score buttons still to be done
+Scores are getting stored in local storage, but not displaying on the high scores page
+If timer runs out we should be taken directly to the initials screen and the timer should read 0, not blank
+Reformat timer to compare seconds elapsed and time given.
 
 
 

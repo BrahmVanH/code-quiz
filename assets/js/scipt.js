@@ -89,18 +89,19 @@ const clearBtn = document.querySelector("#clearScores");
 var score = 0;
 var currentQ = 0;
 var highScores = [];
-var timerInterval;
+var interval;
 var timeLeft = 150;
+var timeElapsed = 0;
 
 
 // Function to start timer 
 
 function startTimer() {
 
-    timeLeft = 150
-     timerEl.textContent = timeLeft
+    
+     timerEl.textContent = timeLeft;
 
-    var timerInterval = setInterval(function() {
+    interval = setInterval(function() {
 
         if (timeLeft >= 1) {
             
@@ -109,7 +110,7 @@ function startTimer() {
             timeLeft--;
 
         } else {
-            timerEl.textContent = '';
+            timerEl.textContent = '0';
 
            // clearInterval(timerInterval);
             nextQuestion();
@@ -124,7 +125,7 @@ function startTimer() {
 // Function to stop timer
 
 function stopTimer() {
-    clearInterval(timerInerval);
+    clearInterval(interval);
 }
 
 // Function to move to next question
