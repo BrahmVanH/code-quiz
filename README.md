@@ -6,11 +6,13 @@
 This project was a review in JavaScript and APIs. The quiz presented is on JavaScript as well as basic HTML and CSS. Each question is worth 1 point. if the user gets a question wrong, they are deducted 10 seconds from the total time given. During the quiz, at any point, you can choose to view the high score list. At the end of the quiz, the user is able to log their score to the high score list. The user also has the option to clear all the locally stored high scores. 
 
 
+https://brahmvanh.github.io/code-quiz/
 
+![Screenshot of deployed application](assets/images/Screenshot-1.png)
 
 # Installation 
 
-N/N
+N/A
 
 
 # Usage
