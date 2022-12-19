@@ -1,3 +1,6 @@
+
+// Question bank for quiz
+
 var questions = [
 
     {
@@ -99,33 +102,27 @@ var timeElapsed = 0;
 function startTimer() {
 
     
-     timerEl.textContent = timeLeft;
-
+    timerEl.textContent = timeLeft;
     interval = setInterval(function() {
 
-        if (timeLeft >= 1) {
+        timeElapsed++;
+        timerEl.textContent = timeLeft - timeElapsed;
+
+        if (timeElapsed >= timeLeft) {
             
-            timerEl.textContent = timeLeft;
-
-            timeLeft--;
-
-        } else {
-            timerEl.textContent = '0';
-
-           // clearInterval(timerInterval);
+            currentQ = questions.length;
             nextQuestion();
-            
 
-
-        }
-
-        }, 1000);
+        } 
+    }, 1000);
 }
+
 
 // Function to stop timer
 
 function stopTimer() {
     clearInterval(interval);
+    timeElapsed = 0;
 }
 
 // Function to move to next question
@@ -150,6 +147,63 @@ function nextQuestion () {
 
 }
 
+
+// Function to compare user's answer to correct answer, displays according message
+
+function compareAnswer(answer) {
+    
+    if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
+        
+        displayMessage("Correct!")
+        score++;
+        
+    } else {
+        
+        displayMessage('Wrong...')
+        timeElapsed += 10;
+    }
+    
+}
+
+// Function to display the message associated with a correct or incorrect answer choice
+
+function displayMessage(message) {
+    var messageEl = document.createElement('div');
+    
+    messageEl.textContent = message;
+    document.querySelector(".main").append(messageEl)
+    setTimeout( function() {
+        messageEl.remove();
+    }, 2000);
+
+}
+
+// Used to hide elements not in use
+
+function hideStuff(element) {
+    
+    element.style.display = 'none';
+    
+    
+}
+
+// Function to show hidden elements when needed
+
+function showStuff(element) {
+    
+    element.style.display = 'block';
+    
+};
+
+// Function used to reset all counts
+
+function reset() {
+    score = 0;
+    currentQ = 0;
+    secondsElapsed = 0;
+    timerEl.textContent = 0;
+}
+
 // Function to create question 
 
 function renderQuestion() {
@@ -161,89 +215,31 @@ function renderQuestion() {
         answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
     
     }
-}
-
-// Function to compare user's answer to correct answer, displays according message
-
-function compareAnswer(answer) {
-
-    if (questions[currentQ].answer == questions[currentQ].choices[answer.id]) {
-
-        displayMessage("Correct!")
-        score++;
-        
-    } else {
-
-        displayMessage('Wrong...')
-        timeLeft -= 5;
-    }
-
-}
-
-// Function to display the message associated with a correct or incorrect answer choice
-
-function displayMessage(message) {
-    var messageEl = document.createElement('div');
-
-    messageEl.textContent = message;
-    document.querySelector(".container").append(messageEl)
-    setTimeout( function() {
-        messageEl.remove();
-    }, 2000);
-
-}
-
-// Used to hide elements not in use
-
-function hideStuff(element) {
- 
-    element.style.display = 'none';
-    
-
-}
-
-// Function to show hidden elements when needed
-
-function showStuff(element) {
-
-    element.style.display = 'block';
-
-}
-
+};
 // Function to render high scores to score list from input score/initials screen
 
 function renderHighScores() {
-
-    scoreEl.innerHTML = '';
+    
+    scoreListEl.innerHTML = '';
     showStuff(highScoresEl);
     highScores = JSON.parse(localStorage.getItem("scores"));
     for (let i = 0; i < highScores.length; i++) {
-        let personalScore = document.createElement('div');
+        let personalScore = document.createElement('li');
         personalScore.className += 'row mb-4 p-1';
         personalScore.setAttribute('style', 'background-color:#65d4d');
         personalScore.textContent = `${(i + 1)}. ${highScores[i].username} - ${highScores[i].userScore}`;
-        scoreEl.append(personalScore);
+        scoreListEl.append(personalScore);
     }
+    
+    
+};
 
 
-}
 
-// create new div element called personal score
-// assign += classes row, mb-4, p-1
-// setattribute to score item, style, background-color #65d4d
-// scoreItem.textContent = `${(i + 1)}. ${highScores[i].username} - ${highScores[i].userScore}`;
-// append the scoreItem as a child to scoresEl
-
-function reset() {
-    score = 0;
-    currentQ = 0;
-    secondsElapsed = 0;
-    timerEl.textContent = 0;
-}
 
 
 // Button listener to display high scores
-//  hides welcome, quiz, input score, renders high scores, stops the timer, resets everything
+
 
 viewHScoresBtn.addEventListener('click', function() {
 
@@ -253,12 +249,12 @@ viewHScoresBtn.addEventListener('click', function() {
     renderHighScores();
     stopTimer();
     reset();
-})
+});
 
 
 
 //Button listener to check answer selected and calls to next question
-//  if statement, 
+
 
 answersEl.addEventListener('click', function(b) {
 
@@ -269,7 +265,7 @@ answersEl.addEventListener('click', function(b) {
 })
 
 // Start quiz button from welcome screen
-//  hide welcome, start timer, render question, show quizel
+
 
 startQuizBtn.addEventListener('click', function() {
 
@@ -277,11 +273,9 @@ startQuizBtn.addEventListener('click', function() {
     startTimer();
     renderQuestion();
     showStuff(quizEl);
-})
+});
 
 //Button to submit initials
-//  let a new variable equal the trimmed version of the initials input by user
-//  if statement (initValue), let userscore
 
 submitBtn.addEventListener('click', function() {
 
@@ -297,16 +291,30 @@ submitBtn.addEventListener('click', function() {
         renderHighScores();
         reset();
     }
-})
+});
 
 //Go back button from high scores
 //  hide high score el, show welcome page
+
+goBackBtn.addEventListener('click', function() {
+
+    hideStuff(highScoresEl);
+    showStuff(welcomeEl);
+    
+
+});
 
 // Cleaer scores button from high score page
 //  highScores = [], set "scores" item in local storage to the stringified verson of highScores
 
 
+clearBtn.addEventListener('click', function() {
 
+    highScores = [];
+    localStorage.setItem("scores", JSON.stringify(highScores));
+    renderHighScores();
+    
+});
 
 
 

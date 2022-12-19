@@ -22,7 +22,7 @@
 
 
 
-         <div class="container">
+         <div class="container main">
 
                 <div class="jumbotron-fluid mt-3">
                     <!--welcome page to initiate quiz-->
@@ -37,7 +37,7 @@
                     
                     <!--quiz questions-->
                     
-                <div class="container" id="quiz">
+                <div class="container p-4" id="quiz">
                     <h1  class="mb-5" id="question"></h1>
                     <div id="answers">
                         
@@ -62,7 +62,7 @@
                     
                 </div>
                 <!--Section at end of quiz to input your score to the high score list-->
-                <div id="inputScore">
+                <div class="container" id="inputScore">
                     <h1>You've Finished The Quiz</h1>
                     <p>Your final score:</p><span id="score"></span></p>
                     <p>Enter Your Initials to Add to Leaderboard <input type="text" id="initials"></p>
@@ -71,9 +71,9 @@
             
                 <!--high scores page-->
             
-                <div id="highScores">
+                <div class="container" id="highScores">
                     <h1>High Scores</h1>
-                    <div id="scoreList"></div>
+                    <ul id="scoreList"></ul>
                     <button id="goBack">Go Back</button>
                     <button id="clearScores">Clear Scores</button>
                 </div>
@@ -81,7 +81,6 @@
         
          </div>
     
-    <!--<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>   -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./assets/js/scipt.js"></script>
 </body>
